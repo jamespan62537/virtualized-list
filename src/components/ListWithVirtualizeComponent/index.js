@@ -23,8 +23,8 @@ const ListWithVirtualizeComponent = () => {
     if (isNextPageLoading) return;
     dispatch(loadingHandlerAction(true));
     setTimeout(() => {
-      const newList = Array.from({ length: 40 }).map((_) =>
-        faker.lorem.sentence()
+      const newList = Array.from({ length: 100 }).map((_) =>
+        faker.lorem.sentence(100)
       );
       dispatch(setCardContentListAction(newList));
       dispatch(loadingHandlerAction(false));
@@ -57,7 +57,7 @@ const ListWithVirtualizeComponent = () => {
                     className="List"
                     height={height}
                     itemCount={itemCount}
-                    itemSize={120}
+                    itemSize={420}
                     width={width}
                     itemData={cardContentList}
                     onItemsRendered={onItemsRendered}

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 // Component
 import ListWithVirtualizeComponent from "./components/ListWithVirtualizeComponent";
+import ListWithoutVirtualizeComponent from "./components/ListWithoutVirtualizeComponent";
 // Redux
 import {
   loadingHandlerAction,
@@ -18,8 +19,8 @@ function App() {
   const initialCardContentList = useCallback(() => {
     dispatch(loadingHandlerAction(true));
     setTimeout(() => {
-      const newList = Array.from({ length: 40 }).map((_) =>
-        faker.lorem.sentence()
+      const newList = Array.from({ length: 100 }).map((_) =>
+        faker.lorem.sentence(100)
       );
       dispatch(setCardContentListAction(newList));
       dispatch(loadingHandlerAction(false));
@@ -32,21 +33,8 @@ function App() {
 
   return (
     <div className="App bg-gray-100">
-      {/* {list.map((item) => (
-        <div className="p-2 mb-6 flex flex-col border-solid border-2">
-          <div className="flex">
-            {item.last_name} {item.first_name}
-          </div>
-          <div>{item.gender}</div>
-        </div>
-      ))} */}
-      <ListWithVirtualizeComponent
-      // cardContentList={cardContentList}
-      // hasNextPage={hasNextPage}
-      // isNextPageLoading={isNextPageLoading}
-      // loadingHandler={loadingHandler}
-      // setCardContentList={setCardContentList}
-      />
+      {/* <ListWithoutVirtualizeComponent /> */}
+      <ListWithVirtualizeComponent />
     </div>
   );
 }

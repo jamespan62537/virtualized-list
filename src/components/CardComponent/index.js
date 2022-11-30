@@ -38,7 +38,7 @@ const CardComponent = ({ index, data, style }) => {
         </div>
       ) : (
         <>
-          <div className="w-10 h-10 rounded-full bg-red-800" />
+          <div className="w-10 h-10 rounded-full bg-green-700" />
           <div className="flex flex-col items-start">
             <p className="text-lg">{title}</p>
             <p className="text-sm text-gray-400">{subTitle}</p>
@@ -49,12 +49,11 @@ const CardComponent = ({ index, data, style }) => {
   );
 
   return (
-    <div
-      style={style}
-      className="p-2 flex flex-col border-solid border-2 items-start mb-10 bg-white"
-    >
-      <CardHeaderComponent>{renderHeader()}</CardHeaderComponent>
-      <CardContentComponent content={data[index]} />
+    <div style={style} className="flex flex-col items-start">
+      <div className=" border-solid border-2 px-5 py-2">
+        <CardHeaderComponent>{renderHeader()}</CardHeaderComponent>
+        <CardContentComponent content={data[index]} />
+      </div>
     </div>
   );
 };
